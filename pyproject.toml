@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "PublishSafe"
+version = "0.1.0"
+description = "A pre-publication decision assistant for biodiversity data"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "lxml>=6.0.2",
+    "polars>=1.38.1",
+    "pyarrow>=23.0.1",
+    "pydantic>=2.12.5",
+    "python-dateutil>=2.9.0.post0",
+    "requests>=2.32.5",
+    "typer>=0.24.1",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+    "ruff>=0.15.5",
+    "ty>=0.0.21",
+]
+
+[project.scripts]
+publish-safe = "publishsafe.main:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/publishsafe"]
+
+[tool.uv]
+package = true
